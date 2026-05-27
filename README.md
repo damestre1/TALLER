@@ -94,41 +94,6 @@ La duración se calcula automáticamente en `Route.getEstimatedDuration()` a par
 - No requiere librerías externas ni frameworks
 ---
  
-## Ejecución
- 
-**1. Clonar el repositorio**
-```bash
-git clone https://github.com/tu-usuario/fluxiobus-colombia.git
-cd fluxiobus-colombia
-```
- 
-**2. Compilar**
-```bash
-mkdir out
-javac -d out \
-  src/model/Route.java \
-  src/model/NationalRoute.java \
-  src/model/InternationalRoute.java \
-  src/model/Passenger.java \
-  src/model/Booking.java \
-  src/repository/PassengerRepository.java \
-  src/repository/RouteRepository.java \
-  src/repository/BookingRepository.java \
-  src/service/FluxioBusException.java \
-  src/service/PassengerService.java \
-  src/service/RouteService.java \
-  src/service/BookingService.java \
-  src/presentation/InputValidator.java \
-  src/presentation/Main.java
-```
- 
-**3. Ejecutar**
-```bash
-java -cp out presentation.Main
-```
- 
----
- 
 ## Reglas de negocio
  
 **Pasajeros**
