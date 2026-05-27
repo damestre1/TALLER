@@ -1,67 +1,22 @@
 package repository;
-
 import model.Route;
-
 import java.util.ArrayList;
 
 public class RouteRepository {
+    private ArrayList<Route> routes = new ArrayList<>();
 
-    private ArrayList<Route> routes;
-
-    public RouteRepository() {
-
-        routes = new ArrayList<>();
-
-    }
-
-    public void addRoute(
-            Route route
-    ) {
-
+    public void add(Route route) {
         routes.add(route);
-
     }
 
-    public Route findRoute(
-            String routeCode
-    ) {
-
-        for(
-                Route route
-                : routes
-        ){
-
-            if(
-                    route
-                            .getRouteCode()
-                            .equals(routeCode)
-            ){
-
-                return route;
-
-            }
-
+    public Route findByCode(String code) {
+        for (Route r : routes) {
+            if (r.getCode().equals(code)) return r;
         }
-
         return null;
-
     }
 
-    public boolean existsRoute(
-            String routeCode
-    ){
-
-        return findRoute(
-                routeCode
-        ) != null;
-
+    public boolean existsByCode(String code) {
+        return findByCode(code) != null;
     }
-
-    public ArrayList<Route>
-    getRoutes(){
-
-        return routes;
-
-    }
-
 }

@@ -1,107 +1,32 @@
 package model;
 
 public class InternationalRoute extends Route {
-
     private String destinationCountry;
-    private boolean passportRequired;
+    private boolean requiresPassport;
     private double internationalFee;
 
-    public InternationalRoute(
-            String routeCode,
-            String originCity,
-            String destinationCity,
-            String departureDate,
-            String departureTime,
-            String arrivalTime,
-            int totalSeats,
-            double basePrice,
-            String status,
-            String destinationCountry,
-            boolean passportRequired,
-            double internationalFee
-    ) {
-
-        super(
-                routeCode,
-                originCity,
-                destinationCity,
-                departureDate,
-                departureTime,
-                arrivalTime,
-                totalSeats,
-                basePrice,
-                status
-        );
-
+    public InternationalRoute(String code, String originCity, String destinationCity, String departureDate, String departureTime, String arrivalTime, int totalCapacity, double basePrice, String destinationCountry, boolean requiresPassport, double internationalFee) {
+        super(code, originCity, destinationCity, departureDate, departureTime, arrivalTime, totalCapacity, basePrice);
         this.destinationCountry = destinationCountry;
-        this.passportRequired = passportRequired;
+        this.requiresPassport = requiresPassport;
         this.internationalFee = internationalFee;
-
     }
 
     @Override
-    public double calculateFinalPrice() {
-
+    public double getFinalPrice() {
         return getBasePrice() + internationalFee;
-
-    }
-
-    public String getDestinationCountry() {
-
-        return destinationCountry;
-
-    }
-
-    public void setDestinationCountry(
-            String destinationCountry
-    ) {
-
-        this.destinationCountry = destinationCountry;
-
-    }
-
-    public boolean isPassportRequired() {
-
-        return passportRequired;
-
-    }
-
-    public void setPassportRequired(
-            boolean passportRequired
-    ) {
-
-        this.passportRequired = passportRequired;
-
-    }
-
-    public double getInternationalFee() {
-
-        return internationalFee;
-
-    }
-
-    public void setInternationalFee(
-            double internationalFee
-    ) {
-
-        this.internationalFee = internationalFee;
-
     }
 
     @Override
     public String toString() {
-
-        return
-                super.toString() +
-                        "\nPais destino: " +
-                        destinationCountry +
-                        "\nRequiere pasaporte: " +
-                        passportRequired +
-                        "\nCargo internacional: " +
-                        internationalFee +
-                        "\nPrecio final: " +
-                        calculateFinalPrice();
-
+        return "[RUTA INTERNACIONAL]\n" + super.toString() + "\n" +
+                String.format(
+                        "  Pais destino  : %s\n" +
+                                "  Pasaporte     : %s\n" +
+                                "  Cargo intl    : $%.0f",
+                        destinationCountry,
+                        requiresPassport ? "Si" : "No",
+                        internationalFee
+                );
     }
-
 }

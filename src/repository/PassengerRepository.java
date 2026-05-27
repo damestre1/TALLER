@@ -1,94 +1,37 @@
 package repository;
-
 import model.Passenger;
-
 import java.util.ArrayList;
 
 public class PassengerRepository {
+    private ArrayList<Passenger> passengers = new ArrayList<>();
 
-    private ArrayList<Passenger> passengers;
-
-    public PassengerRepository() {
-
-        passengers = new ArrayList<>();
-
-    }
-
-    public void addPassenger(
-            Passenger passenger
-    ) {
-
+    public void add(Passenger passenger) {
         passengers.add(passenger);
-
     }
 
-    public Passenger findPassengerById(
-            String id
-    ) {
-
-        for(Passenger passenger : passengers){
-
-            if(
-                    passenger.getId()
-                            .equals(id)
-            ){
-
-                return passenger;
-
-            }
-
+    public Passenger findById(String idNumber) {
+        for (Passenger p : passengers) {
+            if (p.getIdNumber().equals(idNumber)) return p;
         }
-
         return null;
-
     }
 
-    public boolean existsPassenger(
-            String id
-    ){
-
-        return findPassengerById(
-                id
-        ) != null;
-
+    public boolean existsById(String idNumber) {
+        return findById(idNumber) != null;
     }
 
-    public boolean existsPassport(
-            String passport
-    ){
-
-        for(
-                Passenger passenger
-                : passengers
-        ){
-
-            if(
-                    passenger
-                            .getPassportNumber()
-                            .equals(passport)
-            ){
-
-                return true;
-
-            }
-
+    public boolean existsByPassport(String passportNumber) {
+        for (Passenger p : passengers) {
+            if (p.getPassportNumber().equals(passportNumber)) return true;
         }
-
         return false;
-
     }
 
-    public ArrayList<Passenger>
-    getPassengers(){
-
-        return passengers;
-
-    }
-
-    public int totalPassengers(){
-
+    public int count() {
         return passengers.size();
-
     }
 
+    public ArrayList<Passenger> getAll() {
+        return passengers;
+    }
 }
